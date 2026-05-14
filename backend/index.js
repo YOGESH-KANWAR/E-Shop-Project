@@ -3,16 +3,12 @@ const app = express();
 const cors = require("cors");
 require("dotenv").config();
 const dbConnect = require("./db/index");
-const cors = require("cors");
 
 app.use(
   cors({
-    origin: [
-      "http://localhost:5173",
-      "https://e-shop-project-1oof.vercel.app"
-    ],
+    origin: ["http://localhost:5173", "https://e-shop-project-1oof.vercel.app"],
     credentials: true,
-  })
+  }),
 );
 app.use(express.json());
 const cookieParser = require("cookie-parser");
@@ -85,9 +81,7 @@ app.get("/logout", userLogout);
 //************Admin routes******/
 app.post("/adminLogin", adminLogin);
 app.post("/adminSignup", adminSignup);
-// app.post("/adminSignup", (req, res) => {
-//   res.send("hii");
-// });
+
 
 //******** Product route *******
 //Offer Products.....
@@ -98,11 +92,11 @@ app.get("/offerData", getOfferData);
 app.post("/orderProduct", addOrder);
 app.get("/orderDetail", tokenVerify, getOrderDetails);
 
-const PORT = process.env.PORT_NO || 5000;
+const PORT = process.env.PORT || 5000;
 dbConnect().then(() => {
   try {
     app.listen(PORT, () => {
-      console.log(`server Runnig to http://localhost/${PORT}..!`);
+      console.log(`Server running on port ${PORT}`);
     });
   } catch (error) {
     console.log("server is runnin field", error);
