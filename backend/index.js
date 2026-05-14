@@ -5,7 +5,8 @@ require("dotenv").config();
 const dbConnect = require("./db/index");
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    //origin: "http://localhost:5173",
+    origin: "https://e-shop-project-5b7x.vercel.app/",
     credentials: true,
   }),
 );
@@ -14,7 +15,7 @@ const cookieParser = require("cookie-parser");
 app.use(cookieParser());
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const upload = require("./Middleware/uploadImage")
+const upload = require("./Middleware/uploadImage");
 const cloudinary = require("cloudinary").v2;
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
