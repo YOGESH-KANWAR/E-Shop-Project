@@ -3,12 +3,16 @@ const app = express();
 const cors = require("cors");
 require("dotenv").config();
 const dbConnect = require("./db/index");
+const cors = require("cors");
+
 app.use(
   cors({
-    //origin: "http://localhost:5173",
-    origin: "https://e-shop-project-1oof.vercel.app/",
+    origin: [
+      "http://localhost:5173",
+      "https://e-shop-project-1oof.vercel.app"
+    ],
     credentials: true,
-  }),
+  })
 );
 app.use(express.json());
 const cookieParser = require("cookie-parser");

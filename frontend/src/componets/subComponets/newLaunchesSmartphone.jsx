@@ -50,7 +50,6 @@ export default function newLaunchesSmartphone() {
                             </p>
                         </span>
 
-
                         <div className="card-group d-flex flex-column flex-sm-row ">
                             <div className="card border">
                                 <Link to="/productDetails" state={{ productDetails: product1, productCategory: productCategory[0] }} >
