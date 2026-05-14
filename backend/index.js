@@ -6,7 +6,7 @@ const dbConnect = require("./db/index");
 
 app.use(
   cors({
-    origin: ["http://localhost:5173", "https://e-shop-project-1oof.vercel.app"],
+    origin: ["http://localhost:5173", "https://e-shop-project-five.vercel.app"],
     credentials: true,
   }),
 );
@@ -81,7 +81,6 @@ app.get("/logout", userLogout);
 //************Admin routes******/
 app.post("/adminLogin", adminLogin);
 app.post("/adminSignup", adminSignup);
-
 
 //******** Product route *******
 //Offer Products.....
