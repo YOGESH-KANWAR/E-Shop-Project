@@ -19,7 +19,6 @@ export default function singup() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
     if (formData.password !== formData.confPassword) {
       return alert("conform password not matched");
     }

@@ -18,7 +18,6 @@ export default function newLaunchesSmartphone() {
         await fetch(`${import.meta.env.VITE_API_URL}/offerData`)
             .then((res) => res.json())
             .then((data) => {
-                console.log("Render Data =", data)
                 const prodCategory = [];
                 const podData = data.resData;
                 podData.map((element) => {
