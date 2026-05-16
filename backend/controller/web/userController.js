@@ -15,7 +15,7 @@ const register = async (req, res) => {
     if (getUser) {
       return res.send({ status: "404", message: "User alredy exist.." });
     }
-    const newUser = await new UserModel({
+    const newUser = new UserModel({
       name: name,
       lastName: lastName,
       mobileNumber: mobileNumber,
@@ -27,9 +27,14 @@ const register = async (req, res) => {
       isVerified: false,
     });
     await newUser.save();
+
     res
       .status(200)
-      .send({ statusOk: true, message: "Registration successfuli.." });
+      .send({
+        statusOk: true,
+        message: "Registration successfuli..",
+        resData: newUser,
+      });
   } catch (err) {
     res.status(401).send({ message: err.message });
   }

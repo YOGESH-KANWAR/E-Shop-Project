@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from "react";
-import Elogo from '../assets/shopping-2477511.png'
 import { Link, NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { apiAllProducts, categoryProduct, apiData } from "../features/slice";
@@ -85,7 +84,7 @@ export default function header() {
                 <div className=" row flex-column flex-lg-row ">
                     <div className="col-12 d-flex justify-content-end col-lg-3 justify-content-lg-center ">
                         <h2 className="p-2 fw-bold fst-italic" style={{ color: "#6428bf" }}>
-                            <img className="p-0 m-0" src={Elogo} width="55px" height="45px" />
+                            <img className="p-0 m-0" src={"https://res.cloudinary.com/dwk3twqte/image/upload/v1778928438/shopping-2477511_f3ziyj.png"} width="55px" height="45px" />
                             <u>Shop</u>
                         </h2>
                     </div>

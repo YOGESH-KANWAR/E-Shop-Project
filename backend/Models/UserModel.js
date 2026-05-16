@@ -30,11 +30,11 @@ const UserSchema = new mongoose.Schema({
   },
   status: {
     type: String,
-    required: true,
+    default: "active",
   },
   isVerified: {
-    type: boolean,
-    required: true,
+    type: Boolean,
+    default: false,
   },
 });
 const user = mongoose.model("user", UserSchema);

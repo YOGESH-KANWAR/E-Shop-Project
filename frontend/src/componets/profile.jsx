@@ -7,7 +7,6 @@ export default function profile() {
 
   const location = useLocation();
   const userData = location.state;
-  console.log("first", userData);
   const handleClick = async () => {
     await fetch(`${import.meta.env.VITE_API_URL}/logout`, {
       method: "GET",
