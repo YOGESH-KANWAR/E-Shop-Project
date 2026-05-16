@@ -23,6 +23,8 @@ const register = async (req, res) => {
       gender: gender,
       age: age,
       password: hashPass,
+      status: "active",
+      isVerified: false,
     });
     await newUser.save();
     res
