@@ -28,13 +28,11 @@ const register = async (req, res) => {
     });
     await newUser.save();
 
-    res
-      .status(200)
-      .send({
-        statusOk: true,
-        message: "Registration successfuli..",
-        resData: newUser,
-      });
+    res.status(200).send({
+      statusOk: true,
+      message: "Registration successfuli..",
+      resData: newUser,
+    });
   } catch (err) {
     res.status(401).send({ message: err.message });
   }
