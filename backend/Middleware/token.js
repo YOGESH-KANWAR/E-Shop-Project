@@ -3,8 +3,11 @@ const SECRET = process.env.SECRET_KEY;
 const pofileValidet = (req, res, next) => {
   const Token = req.cookies.token;
   try {
-    if (!Token) {
-      return res.status(200).json({ profileStatus: true });
+    if (!token) {
+      return res.status(401).json({
+        profileStatus: true,
+        message: "Token not found",
+      });
     }
     next();
   } catch (err) {

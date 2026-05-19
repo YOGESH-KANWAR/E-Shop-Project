@@ -69,21 +69,20 @@ const loginUser = async (req, res) => {
     res.send({ status: 401, message: err.message });
   }
 };
-const profileStutas = async (req, res) => {
+const profileStatus = async (req, res) => {
   try {
-    const Token = await req.cookies.token;
-    const decoded = await jwt.verify(Token, SECRET);
-    req.user = decoded;
-    const email = await req.user.email;
-    const userDetail = await UserModel.findOne({ email });
+    const token = req.cookies.token;
+    const decoded = jwt.verify(token, SECRET);
+    const userDetail = await UserModel.findOne({ email: decoded.email });
     return res.status(200).json({
       profileStatus: false,
       resData: userDetail,
     });
   } catch (error) {
-    return res
-      .status(401)
-      .json({ message: error.message, profileStatus: true });
+    return res.status(401).json({
+      message: error.message,
+      profileStatus: true,
+    });
   }
 };
 
