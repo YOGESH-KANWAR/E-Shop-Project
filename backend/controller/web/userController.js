@@ -72,8 +72,17 @@ const loginUser = async (req, res) => {
 const profileStatus = async (req, res) => {
   try {
     const token = req.cookies.token;
+
+    if (!token) {
+      return res.status(401).json({
+        profileStatus: true,
+        message: "Token not found",
+      });
+    }
+
     const decoded = jwt.verify(token, SECRET);
     const userDetail = await UserModel.findOne({ email: decoded.email });
+
     return res.status(200).json({
       profileStatus: false,
       resData: userDetail,

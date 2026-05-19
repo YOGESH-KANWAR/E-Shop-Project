@@ -75,7 +75,7 @@ app.delete("/deleteCart/:id", tokenVerify, deleteCart);
 //add user..
 app.post("/singup", register);
 app.post("/login", tokenCheck, loginUser);
-app.get("/profile", pofileValidet, profileStutas); //pofileValid,profileStutas
+app.get("/profile", profileStutas); //pofileValid,profileStutas
 app.get("/logout", userLogout);
 
 //************Admin routes******/
