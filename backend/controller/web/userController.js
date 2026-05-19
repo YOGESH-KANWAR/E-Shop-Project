@@ -80,8 +80,10 @@ const profileStutas = async (req, res) => {
       profileStatus: false,
       resData: userDetail,
     });
-  } catch (err) {
-    return res.status(401).json({ message: err.message, profileStatus: true });
+  } catch (error) {
+    return res
+      .status(401)
+      .json({ message: error.message, profileStatus: true });
   }
 };
 

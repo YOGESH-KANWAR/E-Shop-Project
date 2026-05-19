@@ -25,6 +25,7 @@ export default function navbar() {
     })
       .then((res) => res.json())
       .then((data) => {
+        console.log("first=", data)
         setUserdetail(data.resData);
         if (data.profileStatus == true) {
           return localStorage.setItem("profileStatus", JSON.stringify({ activeStatus: data.profileStatus }));
