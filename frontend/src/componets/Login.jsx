@@ -15,8 +15,6 @@ export default function Login({ closeModal }) {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const user = await JSON.parse(sessionStorage.getItem("loginToken")) || [];
-        if (user.length !== 0) return alert("please logout Account..");
         const fetchData = await fetch(`${import.meta.env.VITE_API_URL}/login`,
             {
                 method: "POST",
@@ -28,11 +26,8 @@ export default function Login({ closeModal }) {
         const userdetail = data.resData;
 
         if (fetchData.ok) {
-            if (data.profileStatus === true) {
-                localStorage.setItem("profileStatus", JSON.stringify({ activeStatus: false, gender: userdetail.gender }));
-                dispatch(profileValue({ activeStatus: false, gender: userdetail.gender }));
-                navigate("/profile", { state: { userdetail } });
-            }
+            dispatch(profileValue({ activeStatus: false, gender: userdetail.gender }));
+            navigate("/profile", { state: { userdetail } });
             alert(data.message);
             closeModal();
         } else {

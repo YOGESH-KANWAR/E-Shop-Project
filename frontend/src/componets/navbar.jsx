@@ -19,21 +19,21 @@ export default function navbar() {
   const cartVal = useSelector(state => state.TodoReducer.cartItems);
   const profile = useSelector(state => state.TodoReducer.profile);
   const fetchProfile = async () => {
-    await fetch(`${import.meta.env.VITE_API_URL}/profile`, {
-      method: "GET",
-      credentials: "include",
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log("first=", data)
-        setUserdetail(data.resData);
-        if (data.profileStatus == true) {
-          return localStorage.setItem("profileStatus", JSON.stringify({ activeStatus: data.profileStatus }));
-        } else {
-          return;
-        }
+    try {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/profile`, {
+        method: "GET",
+        credentials: "include",
       })
-      .catch((err) => console.log("error", err));
+      if (res.status === 401) {
+        return; // console me tumhara custom error nahi aayega
+      }
+      const data = await res.json();
+      let userGender = data.resData || "";
+      dispatch(profileValue({ activeStatus: data.profileStatus, gender: userGender.gender }));
+      setUserdetail(data.resData);
+    } catch (error) {
+      console.log("Fetch Error:", error.message);
+    }
 
   }
   useEffect(() => {

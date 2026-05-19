@@ -26,7 +26,7 @@ cloudinary.config({
 //middleware *********
 const {
   tokenCheck,
-  pofileValidet,
+  profileValidate,
   tokenVerify,
 } = require("./Middleware/token");
 
@@ -44,7 +44,7 @@ const {
 const {
   register,
   loginUser,
-  profileStutas,
+  profileStatus,
   userLogout,
 } = require("./controller/web/userController");
 const { getApi } = require("./controller/web/apiController");
@@ -75,7 +75,7 @@ app.delete("/deleteCart/:id", tokenVerify, deleteCart);
 //add user..
 app.post("/singup", register);
 app.post("/login", tokenCheck, loginUser);
-app.get("/profile", profileStutas); //pofileValid,profileStutas
+app.get("/profile", profileValidate, profileStatus); //profileValidate,profileStutas
 app.get("/logout", userLogout);
 
 //************Admin routes******/

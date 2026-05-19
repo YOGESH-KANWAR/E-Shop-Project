@@ -1,7 +1,8 @@
 const jwt = require("jsonwebtoken");
 const SECRET = process.env.SECRET_KEY;
-const pofileValidet = (req, res, next) => {
-  const Token = req.cookies.token;
+const profileValidate = (req, res, next) => {
+  const token = req.cookies.token;
+
   try {
     if (!token) {
       return res.status(401).json({
@@ -9,10 +10,16 @@ const pofileValidet = (req, res, next) => {
         message: "Token not found",
       });
     }
+
+    const decoded = jwt.verify(token, SECRET);
+    req.user = decoded; // email/id save
+
     next();
   } catch (err) {
-    //wrong token and expare token
-    return res.status(200).json({ message: err.message, profileStatus: true });
+    return res.status(401).json({
+      profileStatus: true,
+      message: err.message,
+    });
   }
 };
 const tokenCheck = (req, res, next) => {
@@ -44,4 +51,4 @@ const tokenVerify = (req, res, next) => {
     return res.status(401).json({ message: err.message });
   }
 };
-module.exports = { tokenCheck, pofileValidet, tokenVerify };
+module.exports = { tokenCheck, profileValidate, tokenVerify };

@@ -71,33 +71,31 @@ const loginUser = async (req, res) => {
 };
 const profileStatus = async (req, res) => {
   try {
-    const token = req.cookies.token;
-
-    if (!token) {
-      return res.status(401).json({
-        profileStatus: true,
-        message: "Token not found",
-      });
-    }
-
-    const decoded = jwt.verify(token, SECRET);
-    const userDetail = await UserModel.findOne({ email: decoded.email });
+    const userDetail = await UserModel.findOne({ email: req.user.email });
 
     return res.status(200).json({
       profileStatus: false,
       resData: userDetail,
     });
   } catch (error) {
-    return res.status(401).json({
+    return res.status(500).json({
       message: error.message,
-      profileStatus: true,
     });
   }
 };
-
 const userLogout = async (req, res) => {
-  res.clearCookie("token");
-  res.send({ message: "Logout Successfuly.." });
+  try {
+    res.clearCookie("token", {
+      httpOnly: true,
+      secure: true,
+      sameSite: "none",
+    });
+    return res.status(200).json({ message: "Logout Successfuly.." });
+  } catch (error) {
+    return res.status(500).json({
+      message: error.message,
+    });
+  }
 };
 
 /* const loginUser = async (req, res) => {
@@ -124,4 +122,4 @@ const userLogout = async (req, res) => {
   }
 }; */
 
-module.exports = { register, loginUser, profileStutas, userLogout };
+module.exports = { register, loginUser, profileStatus, userLogout };
