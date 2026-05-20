@@ -48,24 +48,23 @@ export default function productDetails() {
     }
   }
   const conformSubmit = async () => {
-    await fetch(`${import.meta.env.VITE_API_URL}/profile`, {
-      method: "GET",
-      credentials: "include"
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        let userId = data.resData.email;
-        if (data.profileStatus === true) {
-          dispatch(profileValue({ activeStatus: false }));
-          setModal(true);
-        } else {
-          navigate("/ProductOrder", { state: { productDetail, userId } });
-        }
-      })
-      .catch((err) => {
-        setModal(true)
-        console.log(err.message)
+    try {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/profile`, {
+        method: "GET",
+        credentials: "include",
       });
+      const data = await res.json();
+      if (data.profileStatus === true) {
+        dispatch(profileValue({ activeStatus: false }));
+        setModal(true);
+      } else {
+        const userId = data?.resData?.email;
+        navigate("/ProductOrder", { state: { productDetail, userId } });
+      }
+    } catch (err) {
+      setModal(true);
+      console.log(err.message);
+    }
   };
 
   return (
