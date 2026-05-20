@@ -18,6 +18,8 @@ export default function navbar() {
   const navigate = useNavigate();
   const cartVal = useSelector(state => state.TodoReducer.cartItems);
   const profile = useSelector(state => state.TodoReducer.profile);
+
+  const loginUserDetails = profile.userDetails;
   const fetchProfile = async () => {
     try {
       const res = await fetch(`${import.meta.env.VITE_API_URL}/profile`, {
@@ -28,8 +30,8 @@ export default function navbar() {
         return; // console me tumhara custom error nahi aayega
       }
       const data = await res.json();
-      let userGender = data.resData || "";
-      dispatch(profileValue({ activeStatus: data.profileStatus, gender: userGender.gender }));
+      //let userGender = data.resData || "";
+      dispatch(profileValue({ activeStatus: data.profileStatus, userDetails: data.resData }));
       setUserdetail(data.resData);
     } catch (error) {
       console.log("Fetch Error:", error.message);
@@ -38,7 +40,7 @@ export default function navbar() {
   }
   useEffect(() => {
     fetchProfile();
-  }, [profile]);
+  }, []);
 
   const getCarts = async () => {
     const res = await fetch(`${import.meta.env.VITE_API_URL}/getCart`, {
@@ -170,8 +172,8 @@ export default function navbar() {
                     : <p className=" m-0 p-0 pt-1 rounded-5 " style={{}}>
                       <Link
                         className=" p-1"
-                        to="/profile" state={{ userdetail }}>
-                        {profile.gender == "male" ? <img src={'https://res.cloudinary.com/dwk3twqte/image/upload/v1778591343/profileMan_scp5sj.webp'} className="rounded-5 p-0" style={{ width: "50px", height: "50px" }} />
+                        to="/profile" state={{ userdetail: loginUserDetails }}>
+                        {loginUserDetails.gender == "male" ? <img src={'https://res.cloudinary.com/dwk3twqte/image/upload/v1778591343/profileMan_scp5sj.webp'} className="rounded-5 p-0" style={{ width: "50px", height: "50px" }} />
                           :
                           <img src={'https://res.cloudinary.com/dwk3twqte/image/upload/v1778591346/profileWoman_t30szr.png'} className="rounded-5 p-0" style={{ width: "50px", height: "50px" }} />
                         }

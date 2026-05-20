@@ -13,7 +13,7 @@ export default function Login({ closeModal }) {
     const navigate = useNavigate()
     const dispatch = useDispatch();
 
-    const handleSubmit = async (e) => {
+    const loginSubmit = async (e) => {
         e.preventDefault();
         const fetchData = await fetch(`${import.meta.env.VITE_API_URL}/login`,
             {
@@ -26,7 +26,7 @@ export default function Login({ closeModal }) {
         const userdetail = data.resData;
 
         if (fetchData.ok) {
-            dispatch(profileValue({ activeStatus: false, gender: userdetail.gender }));
+            dispatch(profileValue({ activeStatus: false, userDetails: userdetail }));
             navigate("/profile", { state: { userdetail } });
             alert(data.message);
             closeModal();
@@ -48,7 +48,7 @@ export default function Login({ closeModal }) {
                                 </h1>
                                 <h3 className="text-center mb-4 fw-bold" style={{ color: "#a742f5" }}>Login User</h3>
 
-                                <form onSubmit={handleSubmit} >
+                                <form onSubmit={loginSubmit} >
 
                                     <div className="mb-3 border-bottom d-flex ">
                                         <label className="form-label  fs-4"><FontAwesomeIcon icon={faEnvelope} /></label>
