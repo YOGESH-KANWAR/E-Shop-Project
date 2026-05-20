@@ -53,7 +53,9 @@ export default function productDetails() {
         method: "GET",
         credentials: "include",
       });
+
       const data = await res.json();
+
       if (data.profileStatus === true) {
         dispatch(profileValue({ activeStatus: true }));
         setModal(true);

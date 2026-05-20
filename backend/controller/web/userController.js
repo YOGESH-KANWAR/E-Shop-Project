@@ -78,9 +78,9 @@ const profileStatus = async (req, res) => {
       resData: userDetail,
     });
   } catch (error) {
-    return res.status(500).json({
-      message: error.message,
-    });
+    return res
+      .status(500)
+      .json({ profileStatus: true, message: error.message });
   }
 };
 const userLogout = async (req, res) => {
