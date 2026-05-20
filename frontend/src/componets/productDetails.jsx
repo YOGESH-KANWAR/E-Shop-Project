@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import Login from "../componets/Login"
 import { useDispatch, useSelector } from "react-redux";
+import { profileValue } from "../features/slice";
 import { addCart } from "../features/slice";
 
 export default function productDetails() {
@@ -55,6 +56,7 @@ export default function productDetails() {
       .then((data) => {
         let userId = data.resData.email;
         if (data.profileStatus === true) {
+          dispatch(profileValue({ activeStatus: false }));
           setModal(true);
         } else {
           navigate("/ProductOrder", { state: { productDetail, userId } });
