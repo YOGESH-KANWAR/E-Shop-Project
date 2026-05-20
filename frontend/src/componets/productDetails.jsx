@@ -48,7 +48,7 @@ export default function productDetails() {
     }
   }
   const conformSubmit = async () => {
-    fetch(`${import.meta.env.VITE_API_URL}/profile`, {
+    await fetch(`${import.meta.env.VITE_API_URL}/profile`, {
       method: "GET",
       credentials: "include"
     })
