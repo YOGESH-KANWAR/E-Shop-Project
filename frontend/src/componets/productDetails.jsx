@@ -55,9 +55,12 @@ export default function productDetails() {
       });
 
       const data = await res.json();
-      alert("product order");
+      if (res.status === 200) {
+        return alert("product order=");
+      }
+
       console.log("first=", data)
-      // if (data.profileStatus === true) {
+      // if (data.profileStatus) {
       //   dispatch(profileValue({ activeStatus: true }));
       //   setModal(true);
       // } else {
