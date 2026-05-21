@@ -60,7 +60,7 @@ export default function orderDetails() {
                 <figure
                   className="border p-2 rounded-3 me-3 border mb-0" style={{ width: "200px", height: "110px" }}>
                   <img
-                    src={`productImage/${item.orderProduct.imageUrl}`}
+                    src={item.orderProduct.imageUrl}
                     className="w-100 h-100 rounded-3"
                   />
                 </figure>
