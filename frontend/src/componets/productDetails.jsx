@@ -56,7 +56,7 @@ export default function productDetails() {
 
       const data = await res.json();
       if (res.status === 200) {
-        return alert("product order=");
+        alert("product order=");
       }
 
       console.log("first=", data)

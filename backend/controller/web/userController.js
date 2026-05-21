@@ -54,8 +54,8 @@ const loginUser = async (req, res) => {
       { expiresIn: "1h" },
     );
     res.cookie("token", Token, {
-      httpOnly: false, //true
-      sameSite: "lax", //strict
+      httpOnly: true,
+      sameSite: "none", //strict//lax
       secure: true, //false
       maxAge: 24 * 60 * 60 * 1000,
     });
@@ -96,29 +96,5 @@ const userLogout = async (req, res) => {
     });
   }
 };
-
-/* const loginUser = async (req, res) => {
-  try {
-    const { email, password } = req.body;
-    const getUser = await UserModel.findOne({ email });
-    if (!getUser) {
-      return res.send({ status: "404", message: "User not found.." });
-    }
-    const passwordMatch = await bcrypt.compare(password, getUser.password);
-    if (!passwordMatch) {
-      return res.send({
-        status: 404,
-        message: "Invalid Password ",
-      });
-    }
-    res.send({
-      status: "200",
-      message: "Login Successfuli...",
-      resData: req.body,
-    });
-  } catch (err) {
-    res.send({ status: 400, message: err.message });
-  }
-}; */
 
 module.exports = { register, loginUser, profileStatus, userLogout };

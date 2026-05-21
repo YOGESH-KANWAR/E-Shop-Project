@@ -2,7 +2,6 @@ const jwt = require("jsonwebtoken");
 const SECRET = process.env.SECRET_KEY;
 const profileValidate = (req, res, next) => {
   const token = req.cookies.token;
-
   try {
     if (!token) {
       return res.status(401).json({
