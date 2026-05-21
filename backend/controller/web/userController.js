@@ -72,7 +72,6 @@ const loginUser = async (req, res) => {
 const profileStatus = async (req, res) => {
   try {
     const userDetail = await UserModel.findOne({ email: req.user.email });
-
     return res.status(200).json({
       profileStatus: false,
       resData: userDetail,

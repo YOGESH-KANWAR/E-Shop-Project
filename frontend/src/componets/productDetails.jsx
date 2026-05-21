@@ -56,6 +56,7 @@ export default function productDetails() {
 
       const data = await res.json();
       alert("product order");
+      console.log("first=", data)
       // if (data.profileStatus === true) {
       //   dispatch(profileValue({ activeStatus: true }));
       //   setModal(true);
