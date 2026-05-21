@@ -53,20 +53,14 @@ export default function productDetails() {
         method: "GET",
         credentials: "include",
       });
-
       const data = await res.json();
-      if (res.status === 200) {
-        alert("product order=");
+      if (data.profileStatus) {
+        dispatch(profileValue({ activeStatus: true }));
+        setModal(true);
+      } else {
+        const userId = data?.resData?.email;
+        navigate("/ProductOrder", { state: { productDetail, userId } });
       }
-
-      console.log("first=", data)
-      // if (data.profileStatus) {
-      //   dispatch(profileValue({ activeStatus: true }));
-      //   setModal(true);
-      // } else {
-      //   const userId = data?.resData?.email;
-      //   navigate("/ProductOrder", { state: { productDetail, userId } });
-      // }
     } catch (err) {
       dispatch(profileValue({ activeStatus: true }));
       setModal(true);
