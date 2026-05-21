@@ -55,14 +55,14 @@ export default function productDetails() {
       });
 
       const data = await res.json();
-
-      if (data.profileStatus === true) {
-        dispatch(profileValue({ activeStatus: true }));
-        setModal(true);
-      } else {
-        const userId = data?.resData?.email;
-        navigate("/ProductOrder", { state: { productDetail, userId } });
-      }
+      alert("product order");
+      // if (data.profileStatus === true) {
+      //   dispatch(profileValue({ activeStatus: true }));
+      //   setModal(true);
+      // } else {
+      //   const userId = data?.resData?.email;
+      //   navigate("/ProductOrder", { state: { productDetail, userId } });
+      // }
     } catch (err) {
       dispatch(profileValue({ activeStatus: true }));
       setModal(true);

@@ -43,7 +43,6 @@ export default function productOrder() {
 
         }
         const userAdress = { ...formData };
-        //const userloginId = JSON.parse(sessionStorage.getItem("loginUser"));
         const UID = location.state.userId;
         const ordId = "ORD" + Date.now();
         const orderDetails = {
