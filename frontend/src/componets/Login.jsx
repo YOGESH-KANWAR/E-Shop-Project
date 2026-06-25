@@ -15,23 +15,36 @@ export default function Login({ closeModal }) {
 
     const loginSubmit = async (e) => {
         e.preventDefault();
-        const fetchData = await fetch(`${import.meta.env.VITE_API_URL}/login`,
-            {
-                method: "POST",
-                credentials: "include",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ email, password }),
-            })
-        const data = await fetchData.json();
-        const userdetail = data.resData;
+        try {
+            const response = await fetch(
+                `${import.meta.env.VITE_API_URL}/login`,
+                {
+                    method: "POST",
+                    credentials: "include",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({ email, password }),
+                }
+            );
+            const data = await response.json();
+            if (data.status == 200) {
+                console.log("first")
+                dispatch(
+                    profileValue({
+                        activeStatus: false,
+                        userDetails: data.resData,
+                    })
+                );
+                navigate("/profile", { state: { userdetail: data.resData } });
+                alert(data.message);
+                closeModal();
 
-        if (fetchData.ok) {
-            dispatch(profileValue({ activeStatus: false, userDetails: userdetail }));
-            navigate("/profile", { state: { userdetail } });
-            alert(data.message);
-            closeModal();
-        } else {
-            fetchData.catch((err) => console.log(err));
+            } else {
+                alert(data.message);
+            }
+        } catch (err) {
+            console.log("Fetch Error:", err);
         }
     }
 

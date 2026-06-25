@@ -60,7 +60,7 @@ export default function navbar() {
 
   useEffect(() => {
     getCarts();
-  }, [profile])
+  }, [])
 
   /// logout user..
   const handleClick = async () => {
@@ -160,16 +160,15 @@ export default function navbar() {
 
 
                 {
-                  profile.activeStatus ?
-                    <li className="nav-item m-2 me-0 pt-1 rounded-5 border bg-white  " >
-                      <Link
-                        className="nav-link fw-bold   "
-                        to="/Login">
-                        {<FontAwesomeIcon icon={faUser} className="fs-5 fw-bolder   " />}
+                  profile.activeStatus ? <li className="nav-item m-2 me-0 pt-1 rounded-5 border bg-white  " >
+                    <Link
+                      className="nav-link fw-bold   "
+                      to="/Login">
+                      {<FontAwesomeIcon icon={faUser} className="fs-5 fw-bolder   " />}
 
-                      </Link>
-                    </li>
-                    : <p className=" m-0 p-0 pt-1 rounded-5 " style={{}}>
+                    </Link>
+                  </li> :
+                    <p className=" m-0 p-0 pt-1 rounded-5 " style={{}}>
                       <Link
                         className=" p-1"
                         to="/profile" state={{ userdetail: loginUserDetails }}>

@@ -37,7 +37,7 @@ export default function profile() {
             </div>
             <div className=' position-absolute mt-5 '>
               {
-                userData.userdetail.gender == "male" ? <figure className=' text-center mb-0 '>
+                userData.userdetail.gender ==="male" ? <figure className=' text-center mb-0 '>
                   <img src={'https://res.cloudinary.com/dwk3twqte/image/upload/v1778591343/profileMan_scp5sj.webp'} className='w-50  rounded-circle  border  border-2 border-info' />
                 </figure>
                   :
