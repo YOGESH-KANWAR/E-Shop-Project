@@ -36,15 +36,10 @@ export default function profile() {
 
             </div>
             <div className=' position-absolute mt-5 '>
-              {
-                userData.userdetail.gender ==="male" ? <figure className=' text-center mb-0 '>
-                  <img src={'https://res.cloudinary.com/dwk3twqte/image/upload/v1778591343/profileMan_scp5sj.webp'} className='w-50  rounded-circle  border  border-2 border-info' />
-                </figure>
-                  :
-                  <figure className=' text-center mb-0'>
-                    <img src={'https://res.cloudinary.com/dwk3twqte/image/upload/v1778591346/profileWoman_t30szr.png'} className='w-50 rounded-circle border  border-2 border-info ' />
-                  </figure>
-              }
+              <figure className=' text-center mb-0 '>
+                <img src={' https://res.cloudinary.com/dwk3twqte/image/upload/v1782541878/active-user_qhtmgz.png'} className='w-25  rounded-circle  border  border-2 border-info' />
+              </figure>
+
               <h4 className='text-center p-0 mt-3 '>{userData.userdetail.name}{userData.userdetail.lastName}</h4>
             </div>
           </div>

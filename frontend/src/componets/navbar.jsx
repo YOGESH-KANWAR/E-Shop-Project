@@ -172,8 +172,7 @@ export default function navbar() {
                       <Link
                         className=" p-1"
                         to="/profile" state={{ userdetail: loginUserDetails }}>
-
-                        <img src={'https://res.cloudinary.com/dwk3twqte/image/upload/v1778591343/profileMan_scp5sj.webp'} className="rounded-5 p-0" style={{ width: "50px", height: "50px" }} />
+                        <img src={'https://res.cloudinary.com/dwk3twqte/image/upload/v1782541878/active-user_qhtmgz.png'} className="rounded-5 p-0 bg-white" style={{ width: "50px", height: "50px" }} />
 
 
                       </Link>
