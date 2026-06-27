@@ -172,9 +172,10 @@ export default function navbar() {
                       <Link
                         className=" p-1"
                         to="/profile" state={{ userdetail: loginUserDetails }}>
-                        {loginUserDetails.gender == "male" ? <img src={'https://res.cloudinary.com/dwk3twqte/image/upload/v1778591343/profileMan_scp5sj.webp'} className="rounded-5 p-0" style={{ width: "50px", height: "50px" }} />
-                          :
-                          <img src={'https://res.cloudinary.com/dwk3twqte/image/upload/v1778591346/profileWoman_t30szr.png'} className="rounded-5 p-0" style={{ width: "50px", height: "50px" }} />
+                        {
+                          profile.userDetails.gender == "male" ? <img src={'https://res.cloudinary.com/dwk3twqte/image/upload/v1778591343/profileMan_scp5sj.webp'} className="rounded-5 p-0" style={{ width: "50px", height: "50px" }} />
+                            :
+                            <img src={'https://res.cloudinary.com/dwk3twqte/image/upload/v1778591346/profileWoman_t30szr.png'} className="rounded-5 p-0" style={{ width: "50px", height: "50px" }} />
                         }
                       </Link>
                     </p>

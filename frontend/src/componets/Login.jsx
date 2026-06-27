@@ -29,7 +29,6 @@ export default function Login({ closeModal }) {
             );
             const data = await response.json();
             if (data.status == 200) {
-                console.log("first")
                 dispatch(
                     profileValue({
                         activeStatus: false,
